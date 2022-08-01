@@ -3,6 +3,8 @@ package com.cybertek.day11;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 public class ParametrizedTestInJUnit5 {
     @ParameterizedTest
@@ -16,6 +18,23 @@ public class ParametrizedTestInJUnit5 {
     @ValueSource(strings = {"john","abbas","ali","TJ"})
     public void testMultipleNames(String name){
         System.out.println("name = " + name);
+    }
+    // SEND GET REQUEST TO https://api.zippopotam.us/us/{zipcode}
+    // with these zipcodes 22030,22031, 22032, 22033 , 22034, 22035, 22036
+    // check status code 200
+
+    @ParameterizedTest
+    @ValueSource(ints={22030,22031, 22032, 22033 , 22034, 22035, 22036})
+    public void zipCodeTest(int zipcode){
+        given()
+                .baseUri("https://api.zippopotam.us")
+                .pathParam("zipcode",zipcode)
+                .log().all()
+        .when()
+                .get("/us/{zipcode}")
+        .then()
+                .statusCode(200);
+
     }
 
 
