@@ -19,8 +19,7 @@ public class BookIItSpecTest extends BookItTestBase {
                 .when()
                 .get("/api/users/me")
                 .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON);
+                .spec(responseSpec);
 
 
 
@@ -36,8 +35,8 @@ public class BookIItSpecTest extends BookItTestBase {
                 .when()
                 .get("/api/users/me")
                 .then()
-                .statusCode(200)
-                .contentType(ContentType.JSON);
+                .spec(getDynamicResSpec(200))
+                .body("firstName", is("Marius"));
 
 
     }
