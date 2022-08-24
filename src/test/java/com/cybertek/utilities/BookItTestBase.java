@@ -19,6 +19,7 @@ public class BookItTestBase {
     public static RequestSpecification studentMemberReqSpec;
     public static RequestSpecification studentLeaderReqSpec;
     public static ResponseSpecification responseSpec;
+    public static RequestSpecification userReqSpec;
 
 
     @BeforeAll

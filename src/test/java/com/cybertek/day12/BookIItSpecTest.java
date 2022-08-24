@@ -35,8 +35,7 @@ public class BookIItSpecTest extends BookItTestBase {
                 .when()
                 .get("/api/users/me")
                 .then()
-                .spec(getDynamicResSpec(200))
-                .body("firstName", is("Marius"));
+                .spec(userCheck("Marius","Forker"));
 
 
     }
