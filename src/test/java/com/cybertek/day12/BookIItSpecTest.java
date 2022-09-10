@@ -31,7 +31,7 @@ public class BookIItSpecTest extends BookItTestBase {
         //verify status code and content type
 
         given()
-                .spec(studentMemberReqSpec)
+                .spec(userReqSpec("student-member"))
                 .when()
                 .get("/api/users/me")
                 .then()
